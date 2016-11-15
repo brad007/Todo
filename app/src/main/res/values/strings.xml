@@ -19,4 +19,5 @@
     </string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="about">Todo is an opensource project, the source code is available at https://github.com/brad007/Todo.\n\nTodo was created with the help of a 3rd party library, MaterialDateTimePicker which can be found at https://github.com/wdullaer/MaterialDateTimePicker</string>
 </resources>

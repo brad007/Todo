@@ -37,6 +37,7 @@
             android:name=".services.AddTodoService"
             android:exported="false" />
 
+        <activity android:name=".ui.activities.AboutActivity"></activity>
     </application>
 
 </manifest>

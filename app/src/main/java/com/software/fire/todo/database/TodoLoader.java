@@ -25,7 +25,7 @@ public class TodoLoader extends AsyncTaskLoader<Cursor> {
     public Cursor loadInBackground() {
         DBHelper helper = new DBHelper(this.getContext());
         SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor todoCursor = db.rawQuery("SELECT * FROM todo", null);
+        Cursor todoCursor = db.rawQuery("SELECT * FROM todo ORDER BY " + DBHelper.KEY_TIME + " ASC", null);
         return  todoCursor;
     }
 }

@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.software.fire.todo.R;
 import com.software.fire.todo.database.DBHelper;
@@ -53,15 +52,21 @@ public class AddToDoActivity extends AppCompatActivity implements View.OnClickLi
         mUpdate = false;
         if (getIntent().hasExtra(DBHelper.KEY_DESCRIPTION)) {
             mUpdate = true;
+
+            //Getting intent data
             Intent intent = getIntent();
             String intentDescription = intent.getStringExtra(DBHelper.KEY_DESCRIPTION);
-            mTodo.setDescription(intentDescription);
             String intentTime = intent.getStringExtra(DBHelper.KEY_TIME);
-            mDate.setTime(Long.parseLong(intentTime));
-            mTodo.setTime(intentTime);
             int intentID = intent.getIntExtra(DBHelper.KEY_ID, 0);
+
+            //Instantiating Todo Object
+            mTodo.setDescription(intentDescription);
+            mTodo.setTime(intentTime);
             mTodo.setId(intentID);
 
+            mDate.setTime(Long.parseLong(intentTime));
+
+            //Setting texts
             mDescriptionView.setText(mTodo.getDescription());
             mDateView.setText(dateUtils.getReadableDate(mTodo.getTime()));
             mTimeView.setText(dateUtils.getTime(mTodo.getTime()));
@@ -71,7 +76,7 @@ public class AddToDoActivity extends AppCompatActivity implements View.OnClickLi
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //Getting description from edittext and updating/creating todo object
                 mCalendar.setTime(mDate);
                 String description = mDescriptionView.getText().toString();
                 long time = mDate.getTime();
@@ -79,7 +84,6 @@ public class AddToDoActivity extends AppCompatActivity implements View.OnClickLi
                 mTodo.setDescription(description);
                 mTodo.setTime(String.valueOf(time));
 
-                Toast.makeText(AddToDoActivity.this,"Updating service " + mTodo.getTime(), Toast.LENGTH_LONG).show();
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(DBHelper.KEY_DESCRIPTION, mTodo.getDescription());
                 contentValues.put(DBHelper.KEY_TIME, mTodo.getTime());
