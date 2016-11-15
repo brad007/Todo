@@ -5,30 +5,41 @@ package com.software.fire.todo.models;
  */
 
 public class Todo {
-    private String toDo;
-    private long time;
+    private int id;
+    private String description;
+    private String time;
 
     public Todo() {
     }
 
-    public Todo(String toDo, long time) {
-        this.toDo = toDo;
+    public Todo(int id, String description, String time) {
+        this.id = id;
+        this.description = description;
         this.time = time;
     }
 
-    public String getToDo() {
-        return toDo;
+    public int getId() {
+
+        return id;
     }
 
-    public void setToDo(String toDo) {
-        this.toDo = toDo;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public long getTime() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(String time) {
         this.time = time;
     }
 }
